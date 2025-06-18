@@ -1,0 +1,5 @@
+<div class="products-list">
+    @for (item of prodcutList(); track item.id) {
+        <app-product-card [product]="item"></app-product-card>
+    }
+</div>

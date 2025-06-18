@@ -1,0 +1,7 @@
+<div class="product-item">
+    <img width="50px" src="{{product().image}}" alt="{{product().name}}" loading="lazy">
+    <h4>{{product().name}}</h4>
+    <p>Price: {{'$' + product().price}}</p>
+   
+    <app-primary-button label='Remove From Cart' (btnClicked)="removeFromCart(product().id)"></app-primary-button>
+</div>

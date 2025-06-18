@@ -1,0 +1,10 @@
+
+<div class="cart-items">
+    @for (item of cartService.cart(); track item.id) {
+       <app-cart-item [product]="item"></app-cart-item>
+    }
+
+</div>
+<div>
+    <app-order-summary></app-order-summary>
+</div>

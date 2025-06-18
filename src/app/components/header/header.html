@@ -1,0 +1,4 @@
+<div class="header-bar">
+<h4>{{title()}}</h4>
+<app-primary-button routerLink="/cart" [label]="cartService.cart().length > 0 ? 'Cart(' + cartService.cart().length + ')' : 'Cart(0)'" (btnClicked)="showButtonClicked()"></app-primary-button>
+</div>
