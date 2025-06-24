@@ -19,13 +19,15 @@ export class ProductsList implements OnInit {
   //fetching data using resources
   public productsResource = resource<Product[], {id: string}>({
     params: () => ({id: this.userId() }),
-    loader: ({params}) => this.fetchProductsWithResource(params),
+    loader: ({params, abortSignal}) => this.fetchProductsWithResource(params, abortSignal),
   }); 
   
   
-  public async fetchProductsWithResource(params:any): Promise<Product[]>{
+  public async fetchProductsWithResource(params:any, abortSignal: AbortSignal): Promise<Product[]>{
     console.log("params for resources ", params)
-    const response = await fetch('https://fakestoreapi.com/products');
+    const response = await fetch('https://fakestoreapi.com/products', {
+      signal: abortSignal, //cancels previous request if a new one is fired
+    });
     if(!response.ok){
      throw new Error("Unable to load products!");
     }
