@@ -1,5 +1,29 @@
+
+<h2>Fetching products using resources</h2>
+<div>
+    @if(productsResource.isLoading()) {
+        <p>loading...</p>
+    }
+    @if(productsResource.error()) {
+        <p>error loading the products using resources</p>
+    }
+
+    @if(!productsResource.isLoading()&& !productsResource.error()) {
+        <!--{{productsResource.value()}}-->
+        @for (item of productsResource.value(); track item.id) {
+        <app-product-card [product]="item"></app-product-card>
+        }
+    }
+
+</div>
+
+<hr>
+
+<h2>Fetching products using signals</h2>
 <div class="products-list">
     @for (item of prodcutList(); track item.id) {
         <app-product-card [product]="item"></app-product-card>
     }
 </div>
+
+
